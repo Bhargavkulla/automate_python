@@ -79,3 +79,39 @@ kubectl run nginx --image=nginx --restart=Never -n ecommerce --as=system:service
 Expected Output:
 Error from server (Forbidden): pods is forbidden
 
+
+
+Step 8: Verify RBAC Permissions
+
+Run the following commands to verify access:
+
+    Admin user can create pods:
+
+kubectl auth can-i create pods --as=system:serviceaccount:ecommerce:admin-user -n ecommerce
+
+Expected Output: yes
+
+Developer user cannot delete pods:
+
+kubectl auth can-i delete pods --as=system:serviceaccount:ecommerce:developer-user -n ecommerce
+
+Expected Output: no
+
+Developer user can list pods:
+
+    kubectl auth can-i list pods --as=system:serviceaccount:ecommerce:developer-user -n ecommerce
+
+    Expected Output: yes
+
+Step 9: Test Pods Creation and Deletion
+Admin can create a pod
+
+kubectl run nginx --image=nginx --restart=Never -n ecommerce --as=system:serviceaccount:ecommerce:admin-user
+
+Developer cannot create a pod
+
+kubectl run nginx --image=nginx --restart=Never -n ecommerce --as=system:serviceaccount:ecommerce:developer-user
+
+Expected Output:
+Error from server (Forbidden): pods is forbidden
+
