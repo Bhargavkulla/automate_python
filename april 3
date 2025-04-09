@@ -1,0 +1,40 @@
+Creating and Using a Shared Library in Jenkins to Standardize Build.
+Q3. Creating and Using a Shared Library in Jenkins to Standardize Build.
+
+You are a DevOps engineer in a company managing multiple services. Each team writes their own Jenkinsfile, but all of them share a common set of actions:
+
+Cloning the Git repository
+Running unit tests
+Deploying to a given environment
+Instead of duplicating this logic in each Jenkinsfile, you’ve been asked to create a Jenkins Shared Library to centralize and standardize.
+
+Step 1: Create a New Git Repo for the Shared Library.
+
+Step 2: Add Pipeline Logic in vars/ Folder example (commonBuild.groovy)
+
+Groovy Sample code:
+
+def call() {
+    stage('Checkout') {
+        checkout scm
+    }
+    stage('Unit Tests') {
+        echo 'Running unit tests...'
+        sh './gradlew test'
+    }
+}
+Step 3: Register the Shared Library in Jenkins.
+
+Step 4: Use the Shared Library in a Jenkinsfile.
+
+[IMAGE 1]
+
+Step 5: Build it.
+
+Answer
+
+Upload your project
+
+Allowed formats - xls/xlsx, csv, png, jpg, pdf
+Start typing here! Your answers get saved automatically.
+
