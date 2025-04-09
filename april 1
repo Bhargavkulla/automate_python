@@ -1,0 +1,15 @@
+https://github.com/devops-experience/k8s-helloworld
+
+Docker & Container Internals
+
+Fork the code below:
+
+https://github.com/devops-experience/k8s-helloworld
+Build a Dockerfile for a simple Python Flask app
+After running the container, display:
+The container ID
+The working directory inside the container
+The read-write layer directory on the host
+Mention the commands you'd use at each step.
+
+Check in all files including images and code into question4 folder in devops-commontrack-mocktest repository.
