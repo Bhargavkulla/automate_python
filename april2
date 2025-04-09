@@ -1,0 +1,61 @@
+Automating Webserver Deployment and Configuration Using Ansible Playbooks and Roles
+Requirement:
+
+Ansible control node (e.g., Ubuntu or CentOS)
+At least 2 Linux servers (Ubuntu preferred)
+SSH access from control node to all servers
+Create a directory structure for your Ansible project including:
+
+Configuration file
+Inventory file
+Role structure
+Step 2 Create and configure an ansible.cfg file to use:
+
+./inventory/hosts as the inventory
+./roles as the roles path
+Step 3 Create a static inventory under inventory/hosts for two target nodes under the group [webservers]. Use ansible_host and ansible_user. Also, define a group variable env=staging.
+
+Step 4 Create an Ansible role named webserver using ansible-galaxy init.
+
+IMAGE 2]
+
+Step 5 In roles/webserver/tasks/main.yml, add tasks to:
+
+Install Apache
+Copy a dynamic homepage using a Jinja2 template
+Start and enable Apache service
+Add Handler:
+
+roles/webserver/handlers/main.yml
+- name: Restart Apache  service:    name: apache2    state: restarted
+Step 6 Create a Jinja2 template file named index.html.j2 that displays:
+
+Hostname using {{ inventory_hostname }}
+Environment using {{ env }}
+Step 7 Create a main playbook file site.yml to apply the webserver role on all webservers with become: yes.
+
+Ping all nodes in the webservers group
+Install curl using the apt module
+Custom index.html is visible on each server via web browser or curl
+[IMAGE 1]
+
+Step 8 Show how to run only the tasks tagged with apache.
+
+Step 9 Add a condition to only deploy the custom homepage if the environment is staging.
+
+Step 10 Modify site.yml to include vault:
+
+vars_files:
+  - group_vars/all/vault.yml
+Run with:
+
+ansible-playbook site.yml --ask-vault-pass
+Apache2 installed on all web hosts
+Each server shows a customized web page at http://<host-ip>
+Sample HTML code you can use:
+
+<html>
+<body>
+  <h1>Welcome to {{ inventory_hostname }} in {{ env }} environment!</h1>
+</body>
+</html>
