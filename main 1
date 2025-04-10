@@ -1,3 +1,8 @@
 create an ansible playbook to create a user with a home directory and add him to the sudousers group
 
 create a simple playbook that updates all packages on a remote host as a root user 
+write an ansible playbook to a web server on the remote host with the following conditions:
+1)Install the right package (apache2 if it is Ubuntu, httpd if is Redhat) based on the Linux distribution
+2)Validate the right version is installed
+3)Copy the local website content to the remote host and set the permissions to 0644
+4)And then start the service
