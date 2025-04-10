@@ -1,0 +1,3 @@
+create an ansible playbook to create a user with a home directory and add him to the sudousers group
+
+create a simple playbook that updates all packages on a remote host as a root user 
