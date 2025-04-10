@@ -6,3 +6,14 @@ write an ansible playbook to a web server on the remote host with the following 
 2)Validate the right version is installed
 3)Copy the local website content to the remote host and set the permissions to 0644
 4)And then start the service
+
+The inventory file should be structured as follows:
+[webservers]
+web1.abc.com
+web2.abc.com
+http_port=8080
+
+[dbservers]
+db1.abc.com
+db2.abc.com
+
