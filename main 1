@@ -17,3 +17,12 @@ http_port=8080
 db1.abc.com
 db2.abc.com
 
+Create an Ansible role that installs Python3 and deploys a custom configuration file for the application.
+
+Task:
+i. Create an Ansible Role named python_app_deploy with the correct directory structure.
+ii. Ensure Python3 is installed as part of the role.
+iii. Place a template file named config.yml.j2 inside the templates/ directory.
+
+Use the template module in the role to copy config.yml.j2 to /etc/python_app/config.yml on the target machine.
+
